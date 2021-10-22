@@ -18,50 +18,95 @@ def handler(event, context):
     # print(bucket)
     # print(key)
     print(event)
-    url1 = "https://query1.finance.yahoo.com/v7/finance/download/AVHOQ?period1=1634428800&period2=1634601600&interval=1d&events=history&includeAdjustedClose=true"
-    url2 = "https://query1.finance.yahoo.com/v7/finance/download/EC?period1=1634428800&period2=1634601600&interval=1d&events=history&includeAdjustedClose=true"
-    url3 = "https://query1.finance.yahoo.com/v7/finance/download/AVAL?period1=1634428800&period2=1634601600&interval=1d&events=history&includeAdjustedClose=true"
-    url4 = "https://query1.finance.yahoo.com/v7/finance/download/CMTOY?period1=1634428800&period2=1634601600&interval=1d&events=history&includeAdjustedClose=true"
+    url1 = "https://query1.finance.yahoo.com/v7/finance/download/AVHOQ?period1=1634774400&period2=1634860800&interval=1d&events=history&includeAdjustedClose=true"
+    url2 = "https://query1.finance.yahoo.com/v7/finance/download/EC?period1=1634774400&period2=1634860800&interval=1d&events=history&includeAdjustedClose=true"
+    url3 = "https://query1.finance.yahoo.com/v7/finance/download/AVAL?period1=1634774400&period2=1634860800&interval=1d&events=history&includeAdjustedClose=true"
+    url4 = "https://query1.finance.yahoo.com/v7/finance/download/CMTOY?period1=1634774400&period2=1634860800&interval=1d&events=history&includeAdjustedClose=true"
 
     key = 'AVHOQ.csv'
     key1 = 'EC.csv'
     key2 = 'AVAL.csv'
     key3 = 'CMTOY.csv'
 
-    respuesta = urllib.request.urlopen(url1)
-    respuesta1 = urllib.request.urlopen(url2)
-    respuesta2 = urllib.request.urlopen(url3)
-    respuesta3 = urllib.request.urlopen(url4)
 
-    f = StringIO(bytearray(respuesta.read()).decode())
-    f1 = StringIO(bytearray(respuesta1.read()).decode())
-    f2 = StringIO(bytearray(respuesta2.read()).decode())
-    f3 = StringIO(bytearray(respuesta3.read()).decode())
+    def data1():
+        respuesta = urllib.request.urlopen(url1)
+        f = StringIO(bytearray(respuesta.read()).decode())
+        archivo = csv.reader(f)
 
-    archivo = csv.reader(f)
-    archivo1 = csv.reader(f1)
-    archivo2 = csv.reader(f2)
-    archivo3 = csv.reader(f3)
 
-    with open('/tmp/AVHOQ.csv', 'w') as f:
-        writer = csv.writer(f)
-        for line in archivo:
-            writer.writerow(line)
+        with open('/tmp/AVHOQ.csv', 'w') as f:
+            writer = csv.writer(f)
+            for line in archivo:
+                writer.writerow(line)
 
-    with open('/tmp/EC.csv', 'w') as f:
-        writer = csv.writer(f1)
-        for line in archivo1:
-            writer.writerow(line)
+    def data2():
+        respuesta = urllib.request.urlopen(url2)
+        f = StringIO(bytearray(respuesta.read()).decode())
+        archivo = csv.reader(f)
 
-    with open('/tmp/AVAL.csv', 'w') as f:
-        writer = csv.writer(f)
-        for line in archivo2:
-            writer.writerow(line)  
+        with open('/tmp/EC.csv', 'w') as f:
+            writer = csv.writer(f)
+            for line in archivo:
+                writer.writerow(line)
 
-    with open('/tmp/CMTOY.csv', 'w') as f:
-        writer = csv.writer(f)
-        for line in archivo3:
-            writer.writerow(line)  
+    def data3():
+        respuesta = urllib.request.urlopen(url3)
+        f = StringIO(bytearray(respuesta.read()).decode())
+        archivo = csv.reader(f)
+
+        with open('/tmp/AVAL.csv', 'w') as f:
+            writer = csv.writer(f)
+            for line in archivo:
+                writer.writerow(line)
+
+    def data4():
+        respuesta = urllib.request.urlopen(url4)
+        f = StringIO(bytearray(respuesta.read()).decode())
+        archivo = csv.reader(f)
+
+        with open('/tmp/CMTOY.csv', 'w') as f:
+            writer = csv.writer(f)
+            for line in archivo:
+                writer.writerow(line)
+    data1()
+    data2()
+    data3()
+    data4()
+    #respuesta = urllib.request.urlopen(url1)
+    #respuesta1 = urllib.request.urlopen(url2)
+    #respuesta2 = urllib.request.urlopen(url3)
+    #respuesta3 = urllib.request.urlopen(url4)
+
+    #f = StringIO(bytearray(respuesta.read()).decode())
+    #f1 = StringIO(bytearray(respuesta1.read()).decode())
+    #f2 = StringIO(bytearray(respuesta2.read()).decode())
+    #f3 = StringIO(bytearray(respuesta3.read()).decode())
+
+    #archivo = csv.reader(f)
+    #archivo1 = csv.reader(f1)
+    #archivo2 = csv.reader(f2)
+    #archivo3 = csv.reader(f3)
+
+    #with open('/tmp/AVHOQ.csv', 'w') as f:
+        #writer = csv.writer(f)
+        #for line in archivo:
+            #writer.writerow(line)
+
+    #with open('/tmp/EC.csv', 'w') as f1:
+        #writer1 = csv.writer(f1)
+        #for line in archivo1:
+            #writer1.writerow(line)
+
+    #with open('/tmp/AVAL.csv', 'w') as f2:
+        #writer2 = csv.writer(f2)
+        #for line in archivo2:
+            #writer2.writerow(line)  
+
+    #with open('/tmp/CMTOY.csv', 'w') as f3:
+        #write3r = csv.writer(f3)
+        #for line in archivo3:
+            #writer3.writerow(line)  
 
     data1 = pd.read_csv((url1))
     data2 = pd.read_csv(url2)
