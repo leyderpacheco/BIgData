@@ -18,10 +18,10 @@ def handler(event, context):
     # print(bucket)
     # print(key)
     print(event)
-    url1 = "https://query1.finance.yahoo.com/v7/finance/download/AVHOQ?period1=1634774400&period2=1634860800&interval=1d&events=history&includeAdjustedClose=true"
-    url2 = "https://query1.finance.yahoo.com/v7/finance/download/EC?period1=1634774400&period2=1634860800&interval=1d&events=history&includeAdjustedClose=true"
-    url3 = "https://query1.finance.yahoo.com/v7/finance/download/AVAL?period1=1634774400&period2=1634860800&interval=1d&events=history&includeAdjustedClose=true"
-    url4 = "https://query1.finance.yahoo.com/v7/finance/download/CMTOY?period1=1634774400&period2=1634860800&interval=1d&events=history&includeAdjustedClose=true"
+    url1 = "https://query1.finance.yahoo.com/v7/finance/download/AVHOQ?period1=1634860800&period2=1634947200&interval=1d&events=history&includeAdjustedClose=true"
+    url2 = "https://query1.finance.yahoo.com/v7/finance/download/EC?period1=1634860800&period2=1634947200&interval=1d&events=history&includeAdjustedClose=true"
+    url3 = "https://query1.finance.yahoo.com/v7/finance/download/AVAL?period1=1634860800&period2=1634947200&interval=1d&events=history&includeAdjustedClose=true"
+    url4 = "https://query1.finance.yahoo.com/v7/finance/download/CMTOY?period1=1634860800&period2=1634947200&interval=1d&events=history&includeAdjustedClose=true"
 
     key = 'AVHOQ.csv'
     key1 = 'EC.csv'
