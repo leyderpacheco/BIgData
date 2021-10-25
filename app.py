@@ -4,7 +4,11 @@ import csv
 import urllib.request
 import pandas as pd
 from io import StringIO
+from datetime import date
+from datetime import datetime
 
+#Día actual
+today = date.today()
 s3 = boto3.resource('s3')
 bucket = s3.Bucket('miyahoo007')
 
@@ -18,9 +22,9 @@ def handler(event, context):
     # print(bucket)
     # print(key)
     print(event)
-    url1 = "https://query1.finance.yahoo.com/v7/finance/download/AVHOQ?period1=1634860800&period2=1634947200&interval=1d&events=history&includeAdjustedClose=true"
-    url2 = "https://query1.finance.yahoo.com/v7/finance/download/EC?period1=1634860800&period2=1634947200&interval=1d&events=history&includeAdjustedClose=true"
-    url3 = "https://query1.finance.yahoo.com/v7/finance/download/AVAL?period1=1634860800&period2=1634947200&interval=1d&events=history&includeAdjustedClose=true"
+    url1 = "https://query1.finance.yahoo.com/v7/finance/download/AVHOQ?period1=1634947200&period2=1635033600&interval=1d&events=history&includeAdjustedClose=true"
+    url2 = "https://query1.finance.yahoo.com/v7/finance/download/EC?period1=1634947200&period2=1635033600&interval=1d&events=history&includeAdjustedClose=true"
+    url3 = "https://query1.finance.yahoo.com/v7/finance/download/AVAL?period1=1603497600&period2=1635033600&interval=1d&events=history&includeAdjustedClose=true"
     url4 = "https://query1.finance.yahoo.com/v7/finance/download/CMTOY?period1=1634860800&period2=1634947200&interval=1d&events=history&includeAdjustedClose=true"
 
     key = 'AVHOQ.csv'
@@ -126,9 +130,12 @@ def handler(event, context):
     #read2 = csv.reader(ifile2)
     #read2 = csv.reader(ifile3)
 
-    año = data1['Date'][0][0:4]
-    mes = data1['Date'][0][5:7]
-    dia = data1['Date'][0][8:10]
+    dia = today.day
+    mes= today.month
+    año = today.year
+    #año = data1['Date'][0][0:4]
+    #mes = data1['Date'][0][5:7]
+    #dia = data1['Date'][0][8:10]
 
     bucket1 = 'miyahoo007'
     bucket2 = 'miyahoo007/stocks/company=EC/year={año}/month={mes}/day={dia}'
